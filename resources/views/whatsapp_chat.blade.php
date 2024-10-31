@@ -49,6 +49,14 @@
                 <li class="list-group-item">
                     <strong>{{ $message['from'] }}:</strong> {{ $message['body'] }}
                     <small class="text-muted">{{ \Carbon\Carbon::createFromTimestamp($message['timestamp'])->toDateTimeString() }}</small>
+                    <div>
+                        @if(isset($message['media']) && $message['media']['mimetype'] == "audio/ogg; codecs=opus" )
+                            <audio controls>
+                                <source src="data:audio/ogg;base64,{{ $message['media']['data'] }}">
+                                Your browser does not support the audio element.
+                            </audio>
+                        @endif
+                    </div>
                 </li>
             @endforeach
         </ul>

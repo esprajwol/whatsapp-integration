@@ -1,6 +1,6 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const express = require('express');
-const qrcode = require('qrcode');
+const qrCode = require('qrcode');
 
 const app = express();
 const port = 3000;
@@ -14,8 +14,7 @@ const client = new Client({
 app.post('/generate-qr', async (req, res) => {
     client.on('qr', async (qr) => {
         // Generate QR code in base64 format
-        const qrImage = await qrcode.toDataURL(qr);
-
+        const qrImage = await qrCode.toDataURL(qr);
         res.json({ qrCode: qrImage });
     });
 
@@ -28,7 +27,7 @@ app.post('/generate-qr', async (req, res) => {
 
 client.on('ready', async () => {
     try {
-        const chat = await client.getChatById('923442854313@c.us');
+        const chat = await client.getChatById('9849409161@c.us');
         console.log(chat);
     } catch (error) {
         console.error('Error fetching chat:', error);
@@ -51,14 +50,20 @@ app.post('/get-chat', async (req, res) => {
 
         if (chat) {
             const messages = await chat.fetchMessages({ limit: 20 });
-            res.json({
-                success: true,
-                messages: messages.map(msg => ({
+            const promises = messages.map(async (msg) => {
+                return {
                     from: msg.from,
                     body: msg.body,
-                    timestamp: msg.timestamp
-                }))
+                    timestamp: msg.timestamp,
+                    media: await msg.downloadMedia(),
+                }
             });
+            const results = await Promise.all(promises);
+            res.json({
+                success: true,
+                messages: results,
+            })
+
         } else {
             res.json({
                 success: false,
@@ -67,7 +72,6 @@ app.post('/get-chat', async (req, res) => {
         }
     } catch (error) {
         console.error('Detailed error:', error);
-
         res.status(500).json({
             success: false,
             message: 'An error occurred while fetching the chat',
@@ -79,4 +83,11 @@ app.post('/get-chat', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`WhatsApp QR API running on port ${port}`);
+    
+    /* for Instant Connection 
+    client.on('ready', () => {
+        console.log('WhatsApp client is ready');
+    });
+    client.initialize();
+    */
 });

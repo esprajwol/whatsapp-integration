@@ -1,2 +1,3 @@
-2024/10/09-01:31:15.957 f903 Creating DB /Users/mac/code/remote/whatsapp-scraping/node-whatsapp/.wwebjs_auth/session/Default/Service Worker/Database since it was missing.
-2024/10/09-01:31:15.976 f903 Reusing MANIFEST /Users/mac/code/remote/whatsapp-scraping/node-whatsapp/.wwebjs_auth/session/Default/Service Worker/Database/MANIFEST-000001
+2024/10/31-15:46:38.292 b303 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Service Worker/Database/MANIFEST-000001
+2024/10/31-15:46:38.292 b303 Recovering log #3
+2024/10/31-15:46:38.292 b303 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Service Worker/Database/000003.log 
