@@ -7,7 +7,7 @@ The WhatsApp Message Integration project aims to incorporate WhatsApp text, voic
     - composer install
     - copy .env.example to .env
     - configure env file
-    - php artisan serve: http://127.0.0.1:8000/
+    - php artisan serve: http://127.0.0.1:8000/whatsapp/
 
 
 
