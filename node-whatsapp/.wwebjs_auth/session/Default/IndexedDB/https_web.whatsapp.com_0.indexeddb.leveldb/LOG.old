@@ -1,19 +1,34 @@
-2024/11/01-12:43:17.990 8703 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/11/01-12:43:17.990 8703 Recovering log #1439
-2024/11/01-12:43:18.003 8703 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001439.log 
-2024/11/01-12:43:19.834 1f503 Level-0 table #1447: started
-2024/11/01-12:43:19.840 1f503 Level-0 table #1447: 207688 bytes OK
-2024/11/01-12:43:19.848 1f503 Delete type=0 #1439
-2024/11/01-12:43:19.848 1f503 Manual compaction at level-0 from '\x00\x9e\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x9f\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/11/01-12:43:21.295 1f503 Compacting 1@1 + 4@2 files
-2024/11/01-12:43:21.338 1f503 Generated table #1448@1: 57505 keys, 2212044 bytes
-2024/11/01-12:43:21.365 1f503 Generated table #1449@1: 15008 keys, 2188101 bytes
-2024/11/01-12:43:21.406 1f503 Generated table #1450@1: 58724 keys, 2202108 bytes
-2024/11/01-12:43:21.443 1f503 Generated table #1451@1: 63702 keys, 1361587 bytes
-2024/11/01-12:43:21.443 1f503 Compacted 1@1 + 4@2 files => 7963840 bytes
-2024/11/01-12:43:21.450 1f503 compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/11/01-12:43:21.450 1f503 Delete type=2 #1444
-2024/11/01-12:43:21.450 1f503 Delete type=2 #1447
-2024/11/01-12:43:21.450 1f503 Delete type=2 #1443
-2024/11/01-12:43:21.450 1f503 Delete type=2 #1442
-2024/11/01-12:43:21.450 1f503 Delete type=2 #1441
+2024/11/01-12:44:36.746 9e03 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/01-12:44:36.746 9e03 Recovering log #1446
+2024/11/01-12:44:36.753 9e03 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001446.log 
+2024/11/01-12:44:38.608 1f603 Level-0 table #1454: started
+2024/11/01-12:44:38.614 1f603 Level-0 table #1454: 140395 bytes OK
+2024/11/01-12:44:38.621 1f603 Delete type=0 #1446
+2024/11/01-12:44:38.622 1f603 Manual compaction at level-0 from '\x00\x9f\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xa0\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/11/01-12:44:40.004 1f603 Compacting 1@1 + 4@2 files
+2024/11/01-12:44:40.050 1f603 Generated table #1455@1: 58065 keys, 2212290 bytes
+2024/11/01-12:44:40.077 1f603 Generated table #1456@1: 14893 keys, 2188510 bytes
+2024/11/01-12:44:40.119 1f603 Generated table #1457@1: 58166 keys, 2201908 bytes
+2024/11/01-12:44:40.157 1f603 Generated table #1458@1: 64402 keys, 1376537 bytes
+2024/11/01-12:44:40.157 1f603 Compacted 1@1 + 4@2 files => 7979245 bytes
+2024/11/01-12:44:40.165 1f603 compacted to: files[ 0 0 4 0 0 0 0 ]
+2024/11/01-12:44:40.165 1f603 Delete type=2 #1451
+2024/11/01-12:44:40.165 1f603 Delete type=2 #1450
+2024/11/01-12:44:40.165 1f603 Delete type=2 #1454
+2024/11/01-12:44:40.165 1f603 Delete type=2 #1449
+2024/11/01-12:44:40.165 1f603 Delete type=2 #1448
+2024/11/01-13:10:22.540 1f41b Level-0 table #1460: started
+2024/11/01-13:10:22.562 1f41b Level-0 table #1460: 845684 bytes OK
+2024/11/01-13:10:22.572 1f41b Delete type=0 #1453
+2024/11/01-13:10:59.049 1f41b Compacting 1@1 + 4@2 files
+2024/11/01-13:10:59.102 1f41b Generated table #1461@1: 60436 keys, 2216271 bytes
+2024/11/01-13:10:59.128 1f41b Generated table #1462@1: 13150 keys, 2185596 bytes
+2024/11/01-13:10:59.172 1f41b Generated table #1463@1: 56528 keys, 2202868 bytes
+2024/11/01-13:10:59.210 1f41b Generated table #1464@1: 67913 keys, 1450761 bytes
+2024/11/01-13:10:59.210 1f41b Compacted 1@1 + 4@2 files => 8055496 bytes
+2024/11/01-13:10:59.218 1f41b compacted to: files[ 0 0 4 0 0 0 0 ]
+2024/11/01-13:10:59.219 1f41b Delete type=2 #1457
+2024/11/01-13:10:59.219 1f41b Delete type=2 #1456
+2024/11/01-13:10:59.219 1f41b Delete type=2 #1455
+2024/11/01-13:10:59.219 1f41b Delete type=2 #1458
+2024/11/01-13:10:59.219 1f41b Delete type=2 #1460
