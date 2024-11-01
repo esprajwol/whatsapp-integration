@@ -25,7 +25,7 @@ class WhatsAppController extends Controller
         $friendNumber = $request->input('friend_number');
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->post('http://localhost:3000/get-chat', [
+        $response = $client->post( env('NODE_SERVER_API_URL').'/get-chat', [
             'json' => ['friend_number' => $friendNumber]
         ]);
 
