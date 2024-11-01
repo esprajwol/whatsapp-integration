@@ -18,3 +18,4 @@ yarn-error.log
 /.idea
 /.vscode
 /node-whatsapp/node_modules
+/node_modules/.wwebjs_cache

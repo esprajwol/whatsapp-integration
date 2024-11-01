@@ -25,13 +25,15 @@ class WhatsAppController extends Controller
         $friendNumber = $request->input('friend_number');
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->post('http://localhost:3000/get-chat', [
+        $response = $client->post( env('NODE_SERVER_API_URL').'/get-chat', [
             'json' => ['friend_number' => $friendNumber]
         ]);
 
         $responseBody = json_decode($response->getBody(), true);
 
         if ($responseBody['success']) {
+            $jsonData = json_encode($responseBody['messages']);
+            var_dump($jsonData);
             return view('whatsapp_chat', ['messages' => $responseBody['messages']]);
         } else {
             return back()->with('error', $responseBody['message']);
@@ -43,7 +45,7 @@ class WhatsAppController extends Controller
 
         // Call Node.js API to fetch chat messages
         $client = new Client();
-        $response = $client->post('http://localhost:3000/get-chat', [
+        $response = $client->post(env('NODE_SERVER_API_URL').'/get-chat', [
             'json' => [
                 'friend_number' => $friendNumber
             ]
