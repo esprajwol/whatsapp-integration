@@ -1,64 +1,19 @@
-2024/11/01-13:13:11.936 b703 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/11/01-13:13:11.936 b703 Recovering log #1459
-2024/11/01-13:13:11.940 b703 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001459.log 
-2024/11/01-13:13:13.803 16503 Level-0 table #1467: started
-2024/11/01-13:13:13.808 16503 Level-0 table #1467: 58881 bytes OK
-2024/11/01-13:13:13.824 16503 Delete type=0 #1459
-2024/11/01-13:13:13.825 16503 Manual compaction at level-0 from '\x00\xa0\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xa1\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/11/01-13:13:15.217 16403 Compacting 1@1 + 4@2 files
-2024/11/01-13:13:15.263 16403 Generated table #1468@1: 59032 keys, 2214680 bytes
-2024/11/01-13:13:15.290 16403 Generated table #1469@1: 14753 keys, 2187207 bytes
-2024/11/01-13:13:15.333 16403 Generated table #1470@1: 57347 keys, 2202221 bytes
-2024/11/01-13:13:15.374 16403 Generated table #1471@1: 65513 keys, 1402165 bytes
-2024/11/01-13:13:15.374 16403 Compacted 1@1 + 4@2 files => 8006273 bytes
-2024/11/01-13:13:15.382 16403 compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/11/01-13:13:15.383 16403 Delete type=2 #1464
-2024/11/01-13:13:15.383 16403 Delete type=2 #1467
-2024/11/01-13:13:15.383 16403 Delete type=2 #1462
-2024/11/01-13:13:15.383 16403 Delete type=2 #1463
-2024/11/01-13:13:15.383 16403 Delete type=2 #1461
-2024/11/01-13:49:12.264 1255b Level-0 table #1473: started
-2024/11/01-13:49:12.297 1255b Level-0 table #1473: 696524 bytes OK
-2024/11/01-13:49:12.308 1255b Delete type=0 #1466
-2024/11/01-13:53:26.923 12563 Compacting 1@1 + 4@2 files
-2024/11/01-13:53:26.971 12563 Generated table #1474@1: 59725 keys, 2214922 bytes
-2024/11/01-13:53:27.001 12563 Generated table #1475@1: 13983 keys, 2185812 bytes
-2024/11/01-13:53:27.044 12563 Generated table #1476@1: 56896 keys, 2202777 bytes
-2024/11/01-13:53:27.083 12563 Generated table #1477@1: 66779 keys, 1427806 bytes
-2024/11/01-13:53:27.084 12563 Compacted 1@1 + 4@2 files => 8031317 bytes
-2024/11/01-13:53:27.091 12563 compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/11/01-13:53:27.092 12563 Delete type=2 #1468
-2024/11/01-13:53:27.092 12563 Delete type=2 #1469
-2024/11/01-13:53:27.092 12563 Delete type=2 #1470
-2024/11/01-13:53:27.092 12563 Delete type=2 #1471
-2024/11/01-13:53:27.092 12563 Delete type=2 #1473
-2024/11/01-14:34:40.666 13b5b Level-0 table #1479: started
-2024/11/01-14:34:40.693 13b5b Level-0 table #1479: 1102199 bytes OK
-2024/11/01-14:34:40.703 13b5b Delete type=0 #1472
-2024/11/01-14:34:47.153 15c17 Compacting 1@1 + 4@2 files
-2024/11/01-14:34:47.228 15c17 Generated table #1480@1: 62157 keys, 2216638 bytes
-2024/11/01-14:34:47.254 15c17 Generated table #1481@1: 12335 keys, 2181170 bytes
-2024/11/01-14:34:47.295 15c17 Generated table #1482@1: 52468 keys, 2201556 bytes
-2024/11/01-14:34:47.339 15c17 Generated table #1483@1: 74055 keys, 1582573 bytes
-2024/11/01-14:34:47.339 15c17 Compacted 1@1 + 4@2 files => 8181937 bytes
-2024/11/01-14:34:47.350 15c17 compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/11/01-14:34:47.350 15c17 Delete type=2 #1479
-2024/11/01-14:34:47.350 15c17 Delete type=2 #1476
-2024/11/01-14:34:47.350 15c17 Delete type=2 #1477
-2024/11/01-14:34:47.350 15c17 Delete type=2 #1475
-2024/11/01-14:34:47.350 15c17 Delete type=2 #1474
-2024/11/01-14:48:09.585 1dda7 Level-0 table #1485: started
-2024/11/01-14:48:09.604 1dda7 Level-0 table #1485: 1154477 bytes OK
-2024/11/01-14:48:09.614 1dda7 Delete type=0 #1478
-2024/11/01-14:48:09.616 1dda7 Compacting 1@1 + 4@2 files
-2024/11/01-14:48:09.667 1dda7 Generated table #1486@1: 66248 keys, 2219142 bytes
-2024/11/01-14:48:09.691 1dda7 Generated table #1487@1: 11853 keys, 2165742 bytes
-2024/11/01-14:48:09.731 1dda7 Generated table #1488@1: 37887 keys, 2200930 bytes
-2024/11/01-14:48:09.787 1dda7 Generated table #1489@1: 95502 keys, 2028030 bytes
-2024/11/01-14:48:09.787 1dda7 Compacted 1@1 + 4@2 files => 8613844 bytes
-2024/11/01-14:48:09.794 1dda7 compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/11/01-14:48:09.794 1dda7 Delete type=2 #1485
-2024/11/01-14:48:09.794 1dda7 Delete type=2 #1480
-2024/11/01-14:48:09.794 1dda7 Delete type=2 #1481
-2024/11/01-14:48:09.795 1dda7 Delete type=2 #1483
-2024/11/01-14:48:09.795 1dda7 Delete type=2 #1482
+2024/11/01-15:21:49.236 8f03 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/01-15:21:49.237 8f03 Recovering log #1543
+2024/11/01-15:21:49.246 8f03 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001543.log 
+2024/11/01-15:21:50.944 13703 Level-0 table #1551: started
+2024/11/01-15:21:50.952 13703 Level-0 table #1551: 164874 bytes OK
+2024/11/01-15:21:50.962 13703 Delete type=0 #1543
+2024/11/01-15:21:50.962 13703 Manual compaction at level-0 from '\x00\xa8\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xa9\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/11/01-15:21:52.315 8f03 Compacting 1@1 + 4@2 files
+2024/11/01-15:21:52.368 8f03 Generated table #1552@1: 69927 keys, 2226301 bytes
+2024/11/01-15:21:52.388 8f03 Generated table #1553@1: 8982 keys, 2167411 bytes
+2024/11/01-15:21:52.426 8f03 Generated table #1554@1: 43290 keys, 2200787 bytes
+2024/11/01-15:21:52.475 8f03 Generated table #1555@1: 88063 keys, 1892127 bytes
+2024/11/01-15:21:52.475 8f03 Compacted 1@1 + 4@2 files => 8486626 bytes
+2024/11/01-15:21:52.482 8f03 compacted to: files[ 0 0 4 0 0 0 0 ]
+2024/11/01-15:21:52.483 8f03 Delete type=2 #1546
+2024/11/01-15:21:52.483 8f03 Delete type=2 #1547
+2024/11/01-15:21:52.483 8f03 Delete type=2 #1551
+2024/11/01-15:21:52.483 8f03 Delete type=2 #1545
+2024/11/01-15:21:52.483 8f03 Delete type=2 #1548

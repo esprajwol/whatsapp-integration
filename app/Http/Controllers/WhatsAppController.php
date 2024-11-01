@@ -24,11 +24,12 @@ class WhatsAppController extends Controller
         return view('whatsapp_chat', compact('qrCode', 'friendNumber'));
     }
 
-    public function getChat(Request $request) {
+    public function getChat(Request $request)
+    {
         $friendNumber = $request->input('friend_number');
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->post( env('NODE_SERVER_API_URL').'/get-chat', [
+        $response = $client->post(env('NODE_SERVER_API_URL') . '/get-chat', [
             'json' => ['friend_number' => $friendNumber]
         ]);
 
@@ -36,21 +37,25 @@ class WhatsAppController extends Controller
 
         if ($responseBody['success']) {
 
-                // get max id table to set new json file 
-                $lastId = Message::max('id');
-                
-                //check if the directory exists
-                if(!File::isDirectory(storage_path($this->messageDirectoryFolder))){
-                    //make the directory because it doesn't exists
-                    File::makeDirectory(storage_path($this->messageDirectoryFolder));
-                }
+            // get max id table to set new json file 
+            $lastId = Message::max('id');
 
-                $jsonData = json_encode($responseBody['messages']);
-                $filePath = storage_path($this->messageDirectoryFolder . '/'. ($lastId+1) . '.json');
-                file_put_contents($filePath, $jsonData);
-              
-            
-               var_dump($lastId);
+            //check if the directory exists
+            if (!File::isDirectory(storage_path($this->messageDirectoryFolder))) {
+                //make the directory because it doesn't exists
+                File::makeDirectory(storage_path($this->messageDirectoryFolder));
+            }
+
+            $jsonData = json_encode($responseBody['messages']);
+            $filePath = storage_path($this->messageDirectoryFolder . '/' . ($lastId + 1) . '.json');
+            file_put_contents($filePath, $jsonData);
+
+            Message::create([
+                'from' => $responseBody['from'],
+                'to' => $responseBody['to'],
+                'json' => $jsonData,
+            ]);
+
 
             return view('whatsapp_chat', ['messages' => $responseBody['messages']]);
         } else {
@@ -63,7 +68,7 @@ class WhatsAppController extends Controller
 
         // Call Node.js API to fetch chat messages
         $client = new Client();
-        $response = $client->post(env('NODE_SERVER_API_URL').'/get-chat', [
+        $response = $client->post(env('NODE_SERVER_API_URL') . '/get-chat', [
             'json' => [
                 'friend_number' => $friendNumber
             ]

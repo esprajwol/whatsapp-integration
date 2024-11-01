@@ -47,6 +47,7 @@ app.post('/get-chat', async (req, res) => {
 
     try {
         const chat = await client.getChatById(friendNumber);
+        console.log("🚀 ~ app.post ~ client:", client)
 
         if (chat) {
             const messages = await chat.fetchMessages({ limit: 20 });
@@ -67,6 +68,8 @@ app.post('/get-chat', async (req, res) => {
             res.json({
                 success: true,
                 messages: results,
+                from: client.info.wid.user,
+                to: friendNumber,
             })
 
         } else {

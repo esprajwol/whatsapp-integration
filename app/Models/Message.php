@@ -14,6 +14,7 @@ class Message extends Model
      * @var string
      */
     protected $table = 'messages';
+    protected $fillable = ["from", "to", "json"];
     protected $primaryKey = 'id';
 
 }
