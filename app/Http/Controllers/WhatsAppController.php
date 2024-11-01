@@ -78,8 +78,6 @@ class WhatsAppController extends Controller
 
         if ($chatData['success']) {
             $messages = $chatData['messages'];
-            $filePath = public_path('data.json');
-
             return view('whatsapp_chat', compact('messages'));
         } else {
             return view('whatsapp_chat')->withErrors('Failed to fetch chat messages.');
