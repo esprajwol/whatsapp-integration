@@ -11,6 +11,7 @@ use File;
 class WhatsAppController extends Controller
 {
     public $messageDirectoryFolder = "json-messages";
+    public $voiceMessageDirectoryFolder = "voice-messages";
 
     public function fetch(Request $request)
     {
@@ -40,12 +41,26 @@ class WhatsAppController extends Controller
             // get max id table to set new json file 
             $lastId = Message::max('id');
 
+
             //check if the directory exists
             if (!File::isDirectory(storage_path($this->messageDirectoryFolder))) {
                 //make the directory because it doesn't exists
                 File::makeDirectory(storage_path($this->messageDirectoryFolder));
             }
+            if (!File::isDirectory(storage_path($this->voiceMessageDirectoryFolder))) {
+                //make the directory because it doesn't exists
+                File::makeDirectory(storage_path($this->voiceMessageDirectoryFolder));
+            }
 
+            // filter arrays with attachment only 
+            foreach ($responseBody['messages'] as $message) {
+                if(isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus" ) {
+                  $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
+                    file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
+
+                }
+            }
+            
             $jsonData = json_encode($responseBody['messages']);
             $filePath = storage_path($this->messageDirectoryFolder . '/order_' . ($lastId + 1) . '.json');
             file_put_contents($filePath, $jsonData);

@@ -1,3 +1,6 @@
-2024/11/01-15:20:41.090 f303 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
-2024/11/01-15:20:41.091 f303 Recovering log #23
-2024/11/01-15:20:41.091 f303 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/000023.log 
+2024/11/01-16:04:44.536 11903 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+2024/11/01-16:04:44.536 11903 Recovering log #23
+2024/11/01-16:04:44.537 11903 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/000023.log 
+2024/11/01-16:05:45.453 17807 Level-0 table #27: started
+2024/11/01-16:05:45.460 17807 Level-0 table #27: 15648 bytes OK
+2024/11/01-16:05:45.470 17807 Delete type=0 #23
