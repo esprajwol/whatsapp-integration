@@ -7,6 +7,7 @@
     <title>WhatsApp Chat</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="whats-app-icon.png">
 </head>
 <body>
 <div class="container mt-5">

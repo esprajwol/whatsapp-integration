@@ -84,10 +84,9 @@ app.post('/get-chat', async (req, res) => {
 app.listen(port, () => {
     console.log(`WhatsApp QR API running on port ${port}`);
     
-    /* for Instant Connection 
     client.on('ready', () => {
         console.log('WhatsApp client is ready');
     });
     client.initialize();
-    */
+    
 });
