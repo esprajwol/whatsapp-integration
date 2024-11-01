@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-
+use App\Models\Message;
 
 class WhatsAppController extends Controller
 {
@@ -32,8 +32,13 @@ class WhatsAppController extends Controller
         $responseBody = json_decode($response->getBody(), true);
 
         if ($responseBody['success']) {
-            $jsonData = json_encode($responseBody['messages']);
-            var_dump($jsonData);
+                $jsonData = json_encode($responseBody['messages']);
+                $filePath = public_path('data.json');
+                file_put_contents($filePath, $jsonData);
+                 // get max id table
+               $lastId = Message::max('id');
+               var_dump($lastId);
+
             return view('whatsapp_chat', ['messages' => $responseBody['messages']]);
         } else {
             return back()->with('error', $responseBody['message']);
@@ -55,6 +60,9 @@ class WhatsAppController extends Controller
 
         if ($chatData['success']) {
             $messages = $chatData['messages'];
+            $filePath = public_path('data.json');
+            //file_put_contents($filePath, $jsonData);
+
             return view('whatsapp_chat', compact('messages'));
         } else {
             return view('whatsapp_chat')->withErrors('Failed to fetch chat messages.');
