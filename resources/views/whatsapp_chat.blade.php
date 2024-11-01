@@ -7,7 +7,7 @@
     <title>WhatsApp Chat</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="whats-app-icon.png">
+    <link rel="icon" type="image/png" href={{ asset('/whats-app-icon.png') }}>
 </head>
 <body>
 <div class="container mt-5">
@@ -48,12 +48,12 @@
         <ul class="list-group">
             @foreach ($messages as $message)
                 <li class="list-group-item">
-                    <strong>{{ $message['from'] }}:</strong> {{ $message['body'] }}
-                    <small class="text-muted">{{ \Carbon\Carbon::createFromTimestamp($message['timestamp'])->toDateTimeString() }}</small>
+                    <strong>{{ $message['from'] }}:</strong> {{ $message['body']['text'] }}
+                    <small class="text-muted">{{ \Carbon\Carbon::createFromTimestamp($message['datetime'])->toDateTimeString() }}</small>
                     <div>
-                        @if(isset($message['media']) && $message['media']['mimetype'] == "audio/ogg; codecs=opus" )
+                        @if(isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus" )
                             <audio controls>
-                                <source src="data:audio/ogg;base64,{{ $message['media']['data'] }}">
+                                <source src="data:audio/ogg;base64,{{ $message['body']['attachment']['data'] }}">
                                 Your browser does not support the audio element.
                             </audio>
                         @endif

@@ -50,12 +50,18 @@ app.post('/get-chat', async (req, res) => {
 
         if (chat) {
             const messages = await chat.fetchMessages({ limit: 20 });
+            console.log("🚀 ~ app.post ~ messages:", messages)
             const promises = messages.map(async (msg) => {
                 return {
                     from: msg.from,
-                    body: msg.body,
-                    timestamp: msg.timestamp,
-                    media: await msg.downloadMedia(),
+                    to: msg.to,
+                    body: { 
+                        text: msg.body,
+                        attachment: await msg.downloadMedia(),
+                    },
+                    datetime: msg.timestamp,
+                    message_link: msg.id.id,
+
                 }
             });
             const results = await Promise.all(promises);
