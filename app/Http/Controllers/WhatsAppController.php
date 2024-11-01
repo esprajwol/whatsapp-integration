@@ -10,7 +10,7 @@ use File;
 
 class WhatsAppController extends Controller
 {
-    public $messageDirectoryFolder = "messages-json-object";
+    public $messageDirectoryFolder = "json-messages";
 
     public function fetch(Request $request)
     {

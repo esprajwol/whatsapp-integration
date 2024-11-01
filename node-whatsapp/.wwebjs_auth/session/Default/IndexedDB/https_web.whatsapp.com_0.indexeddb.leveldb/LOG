@@ -47,3 +47,18 @@
 2024/11/01-14:34:47.350 15c17 Delete type=2 #1477
 2024/11/01-14:34:47.350 15c17 Delete type=2 #1475
 2024/11/01-14:34:47.350 15c17 Delete type=2 #1474
+2024/11/01-14:48:09.585 1dda7 Level-0 table #1485: started
+2024/11/01-14:48:09.604 1dda7 Level-0 table #1485: 1154477 bytes OK
+2024/11/01-14:48:09.614 1dda7 Delete type=0 #1478
+2024/11/01-14:48:09.616 1dda7 Compacting 1@1 + 4@2 files
+2024/11/01-14:48:09.667 1dda7 Generated table #1486@1: 66248 keys, 2219142 bytes
+2024/11/01-14:48:09.691 1dda7 Generated table #1487@1: 11853 keys, 2165742 bytes
+2024/11/01-14:48:09.731 1dda7 Generated table #1488@1: 37887 keys, 2200930 bytes
+2024/11/01-14:48:09.787 1dda7 Generated table #1489@1: 95502 keys, 2028030 bytes
+2024/11/01-14:48:09.787 1dda7 Compacted 1@1 + 4@2 files => 8613844 bytes
+2024/11/01-14:48:09.794 1dda7 compacted to: files[ 0 0 4 0 0 0 0 ]
+2024/11/01-14:48:09.794 1dda7 Delete type=2 #1485
+2024/11/01-14:48:09.794 1dda7 Delete type=2 #1480
+2024/11/01-14:48:09.794 1dda7 Delete type=2 #1481
+2024/11/01-14:48:09.795 1dda7 Delete type=2 #1483
+2024/11/01-14:48:09.795 1dda7 Delete type=2 #1482
