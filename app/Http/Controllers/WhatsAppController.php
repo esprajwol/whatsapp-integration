@@ -6,9 +6,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Message;
+use File;
 
 class WhatsAppController extends Controller
 {
+    public $messageDirectoryFolder = "messages-json-object";
+
     public function fetch(Request $request)
     {
         $yourNumber = $request->input('your_number');
@@ -32,11 +35,21 @@ class WhatsAppController extends Controller
         $responseBody = json_decode($response->getBody(), true);
 
         if ($responseBody['success']) {
+
+                // get max id table to set new json file 
+                $lastId = Message::max('id');
+                
+                //check if the directory exists
+                if(!File::isDirectory(storage_path($this->messageDirectoryFolder))){
+                    //make the directory because it doesn't exists
+                    File::makeDirectory(storage_path($this->messageDirectoryFolder));
+                }
+
                 $jsonData = json_encode($responseBody['messages']);
-                $filePath = public_path('data.json');
+                $filePath = storage_path($this->messageDirectoryFolder . '/'. ($lastId+1) . '.json');
                 file_put_contents($filePath, $jsonData);
-                 // get max id table
-               $lastId = Message::max('id');
+              
+            
                var_dump($lastId);
 
             return view('whatsapp_chat', ['messages' => $responseBody['messages']]);
