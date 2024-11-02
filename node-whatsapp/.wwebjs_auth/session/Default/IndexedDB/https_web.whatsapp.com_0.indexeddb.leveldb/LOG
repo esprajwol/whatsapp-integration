@@ -1,34 +1,21 @@
-2024/11/01-16:13:45.415 f303 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/11/01-16:13:45.415 f303 Recovering log #1577
-2024/11/01-16:13:45.424 f303 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001577.log 
-2024/11/01-16:13:47.134 1f003 Level-0 table #1585: started
-2024/11/01-16:13:47.140 1f003 Level-0 table #1585: 165410 bytes OK
-2024/11/01-16:13:47.147 1f003 Delete type=0 #1577
-2024/11/01-16:13:47.148 1f003 Manual compaction at level-0 from '\x00\xac\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xad\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/11/01-16:13:48.575 f603 Compacting 1@1 + 4@2 files
-2024/11/01-16:13:48.624 f603 Generated table #1586@1: 71930 keys, 2228004 bytes
-2024/11/01-16:13:48.646 f603 Generated table #1587@1: 9552 keys, 2163896 bytes
-2024/11/01-16:13:48.686 f603 Generated table #1588@1: 38837 keys, 2200059 bytes
-2024/11/01-16:13:48.738 f603 Generated table #1589@1: 94822 keys, 2039817 bytes
-2024/11/01-16:13:48.738 f603 Compacted 1@1 + 4@2 files => 8631776 bytes
-2024/11/01-16:13:48.746 f603 compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/11/01-16:13:48.746 f603 Delete type=2 #1585
-2024/11/01-16:13:48.746 f603 Delete type=2 #1579
-2024/11/01-16:13:48.746 f603 Delete type=2 #1582
-2024/11/01-16:13:48.746 f603 Delete type=2 #1580
-2024/11/01-16:13:48.746 f603 Delete type=2 #1581
-2024/11/01-16:45:02.578 8a3b Level-0 table #1591: started
-2024/11/01-16:45:02.603 8a3b Level-0 table #1591: 738817 bytes OK
-2024/11/01-16:45:02.613 8a3b Delete type=0 #1584
-2024/11/01-16:45:30.905 8a3b Compacting 1@1 + 4@2 files
-2024/11/01-16:45:31.004 8a3b Generated table #1592@1: 72249 keys, 2228098 bytes
-2024/11/01-16:45:31.044 8a3b Generated table #1593@1: 9701 keys, 2163261 bytes
-2024/11/01-16:45:31.085 8a3b Generated table #1594@1: 38067 keys, 2198850 bytes
-2024/11/01-16:45:31.147 8a3b Generated table #1595@1: 96071 keys, 2062618 bytes
-2024/11/01-16:45:31.147 8a3b Compacted 1@1 + 4@2 files => 8652827 bytes
-2024/11/01-16:45:31.157 8a3b compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/11/01-16:45:31.157 8a3b Delete type=2 #1591
-2024/11/01-16:45:31.157 8a3b Delete type=2 #1586
-2024/11/01-16:45:31.157 8a3b Delete type=2 #1587
-2024/11/01-16:45:31.157 8a3b Delete type=2 #1589
-2024/11/01-16:45:31.157 8a3b Delete type=2 #1588
+2024/11/02-09:53:00.302 13503 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/02-09:53:00.302 13503 Recovering log #1627
+2024/11/02-09:53:00.308 13503 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001627.log 
+2024/11/02-09:53:02.163 f203 Level-0 table #1636: started
+2024/11/02-09:53:02.170 f203 Level-0 table #1636: 125581 bytes OK
+2024/11/02-09:53:02.179 f203 Delete type=0 #1627
+2024/11/02-09:53:02.179 f203 Manual compaction at level-0 from '\x00\xb1\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xb2\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/11/02-09:53:03.583 13403 Compacting 1@1 + 5@2 files
+2024/11/02-09:53:03.632 13403 Generated table #1637@1: 73401 keys, 2228763 bytes
+2024/11/02-09:53:03.655 13403 Generated table #1638@1: 10260 keys, 2160967 bytes
+2024/11/02-09:53:03.688 13403 Generated table #1639@1: 29489 keys, 2196860 bytes
+2024/11/02-09:53:03.748 13403 Generated table #1640@1: 108390 keys, 2263061 bytes
+2024/11/02-09:53:03.755 13403 Generated table #1641@1: 716 keys, 61906 bytes
+2024/11/02-09:53:03.755 13403 Compacted 1@1 + 5@2 files => 8911557 bytes
+2024/11/02-09:53:03.762 13403 compacted to: files[ 0 0 5 0 0 0 0 ]
+2024/11/02-09:53:03.762 13403 Delete type=2 #1630
+2024/11/02-09:53:03.762 13403 Delete type=2 #1631
+2024/11/02-09:53:03.762 13403 Delete type=2 #1633
+2024/11/02-09:53:03.762 13403 Delete type=2 #1632
+2024/11/02-09:53:03.762 13403 Delete type=2 #1636
+2024/11/02-09:53:03.762 13403 Delete type=2 #1629

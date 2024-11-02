@@ -42,18 +42,18 @@ app.post('/get-chat', async (req, res) => {
             message: 'WhatsApp client is not ready yet. Please wait.'
         });
     }
-
-    const friendNumber = req.body.friend_number + '@c.us';
+    const friendNumber = req.body.friend_number
+    const serializedFriendNumber = req.body.friend_number + '@c.us';
 
     try {
-        const chat = await client.getChatById(friendNumber);
+        const chat = await client.getChatById(serializedFriendNumber);
         if (chat) {
             const messages = await chat.fetchMessages({ limit: 20 });
             const promises = messages.map(async (msg) => {
                 return {
                     from: msg.from,
                     to: msg.to,
-                    body: { 
+                    body: {
                         text: msg.body,
                         attachment: await msg.downloadMedia(),
                     },
@@ -89,10 +89,10 @@ app.post('/get-chat', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`WhatsApp QR API running on port ${port}`);
-    
+
     client.on('ready', () => {
         console.log('WhatsApp client is ready');
     });
     client.initialize();
-    
+
 });
