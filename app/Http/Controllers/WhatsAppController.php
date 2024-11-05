@@ -111,3 +111,4 @@ class WhatsAppController extends Controller
         return $qrData['qrCode'];
     }
 
+}
