@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Message;
 use File;
-use FFMpeg\FFMpeg;
-use FFMpeg\Format\Audio\Wav;
+
 
 class WhatsAppController extends Controller
 {
@@ -58,7 +57,6 @@ class WhatsAppController extends Controller
                     $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
                     $filePathWav = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".wav");
                     file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
-                    $this->convertOggToWav( $filePath , $filePathWav);
                 }
             }
 
@@ -112,18 +110,4 @@ class WhatsAppController extends Controller
 
         return $qrData['qrCode'];
     }
-
-    function convertOggToWav($inputFile, $outputFile)
-    {
-        $ffmpeg = FFMpeg::create();
-        $audio = $ffmpeg->open($inputFile);
-
-        $format = new Wav();
-        $format->on('progress', function ($audio, $format, $percentage) {
-            echo "Progress: $percentage%\n";
-        });
-
-        $audio->save($format, $outputFile);
-    }
-}
 
