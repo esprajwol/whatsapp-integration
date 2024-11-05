@@ -59,7 +59,6 @@ app.post('/get-chat', async (req, res) => {
                     },
                     datetime: msg.timestamp,
                     message_link: msg.id.id,
-
                 }
             });
             const results = await Promise.all(promises);
@@ -91,9 +90,10 @@ app.listen(port, () => {
     console.log(`WhatsApp QR API running on port ${port}`);
 
     /** PreInitialize if QR scan */
+    /*
     client.on('ready', () => {
         console.log('WhatsApp client is ready');
     });
     client.initialize();
-    
+    */
 });
