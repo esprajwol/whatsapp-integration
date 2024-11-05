@@ -59,7 +59,8 @@ class WhatsAppController extends Controller
                     $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
                     file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
                     // convert voice to text
-                    GoogleSpeechRecognition::transcribe($filePath);
+                    $transcribedText = GoogleSpeechRecognition::transcribe($filePath);
+                    $responseBody['message']['body'] = $transcribedText;
                 }
             }
 

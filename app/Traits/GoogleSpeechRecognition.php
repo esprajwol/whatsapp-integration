@@ -9,36 +9,48 @@ use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 
 trait GoogleSpeechRecognition
 {
-    public static function transcribe($wavFilePath)
-    {
-      //  try {
-            $speechClient = new SpeechClient();
+  public static function transcribe($audioFilePath)
+  {
+    var_dump("audioFilePath: ", $audioFilePath);
 
-            $audio = (new RecognitionAudio())
-                ->setContent(file_get_contents($wavFilePath));
+    //  try {
+    $connectionConfig = [
+      'credentials' => base_path(env("GOOGLE_APPLICATION_CREDENTIALS")),
 
-            $config = (new RecognitionConfig())
-                ->setEncoding(AudioEncoding::LINEAR16)
-                ->setSampleRateHertz(16000)
-                ->setLanguageCode('en-US');
+    ];
+    $speechClient = new SpeechClient($connectionConfig);
 
-            $response = $speechClient->recognize($config, $audio);
+    $audio = (new RecognitionAudio())
+      ->setContent(file_get_contents($audioFilePath));
 
-            $transcription = '';
-            foreach ($response->getResults() as $result) {
-                $transcription .= $result->getAlternatives()[0]->getTranscript();
-            }
+    $config = (new RecognitionConfig())
+      ->setEncoding(AudioEncoding::OGG_OPUS)
+      ->setSampleRateHertz(12000)->setEnableWordTimeOffsets(true)
+      ->setLanguageCode('en-IN')->setModel('default');
 
-            var_dump($transcription);
-            return $transcription;
-            
-       // } catch (\Exception $err) {
-       //     var_dump($err);
-       // }
-  //  } finally {
+    $response = $speechClient->recognize($config, $audio);
+
+    var_dump("audioFilePath: ", $response->getResults());
+    $transcription = '';
+    foreach ($response->getResults() as $result) {
+      $alternatives = $result->getAlternatives();
+      $mostLikely = $alternatives[0];
+      $transcript = $mostLikely->getTranscript();
+      $confidence = $mostLikely->getConfidence();
+      printf('Transcript: %s' . PHP_EOL, $transcript);
+      printf('Confidence: %s' . PHP_EOL, $confidence);
+      $transcription = $mostLikely;
+    }
+   
+    return $transcription;
+
+    // } catch (\Exception $err) {
+    //     var_dump($err);
+    // }
+    //  } finally {
     //    $client->close();
     //    return "";
-  //  }
-    }
+    //  }
+  }
 
 }

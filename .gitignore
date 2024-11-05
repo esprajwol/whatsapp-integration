@@ -20,3 +20,4 @@ yarn-error.log
 /node-whatsapp/node_modules
 /node-whatsapp/.wwebjs_cache/*
 /node-whatsapp/.wwebjs_auth/*
+service-account-key.json
