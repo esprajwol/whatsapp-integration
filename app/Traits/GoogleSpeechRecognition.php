@@ -9,48 +9,43 @@ use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 
 trait GoogleSpeechRecognition
 {
-  public static function transcribe($audioFilePath)
+  public static function transcribe($audioFilePath): string
   {
-    var_dump("audioFilePath: ", $audioFilePath);
+    try {
+      $connectionConfig = [
+        'credentials' => base_path(env("GOOGLE_APPLICATION_CREDENTIALS")),
 
-    //  try {
-    $connectionConfig = [
-      'credentials' => base_path(env("GOOGLE_APPLICATION_CREDENTIALS")),
+      ];
+      $speechClient = new SpeechClient($connectionConfig);
 
-    ];
-    $speechClient = new SpeechClient($connectionConfig);
+      $audio = (new RecognitionAudio())
+        ->setContent(file_get_contents($audioFilePath));
 
-    $audio = (new RecognitionAudio())
-      ->setContent(file_get_contents($audioFilePath));
+      $config = (new RecognitionConfig())
+        ->setEncoding(AudioEncoding::OGG_OPUS)
+        ->setSampleRateHertz(12000)->setEnableWordTimeOffsets(true)
+        ->setLanguageCode('en-IN')->setModel('default');
 
-    $config = (new RecognitionConfig())
-      ->setEncoding(AudioEncoding::OGG_OPUS)
-      ->setSampleRateHertz(12000)->setEnableWordTimeOffsets(true)
-      ->setLanguageCode('en-IN')->setModel('default');
+      $response = $speechClient->recognize($config, $audio);
 
-    $response = $speechClient->recognize($config, $audio);
+      $transcription = '';
+      foreach ($response->getResults() as $result) {
+        $alternatives = $result->getAlternatives();
+        $mostLikely = $alternatives[0];
+        $transcript = $mostLikely->getTranscript();
+        //$confidence = $mostLikely->getConfidence();
+        //printf('Confidence: %s' . PHP_EOL, $confidence);
+        $transcription = $transcript;
+      }
 
-    var_dump("audioFilePath: ", $response->getResults());
-    $transcription = '';
-    foreach ($response->getResults() as $result) {
-      $alternatives = $result->getAlternatives();
-      $mostLikely = $alternatives[0];
-      $transcript = $mostLikely->getTranscript();
-      $confidence = $mostLikely->getConfidence();
-      printf('Transcript: %s' . PHP_EOL, $transcript);
-      printf('Confidence: %s' . PHP_EOL, $confidence);
-      $transcription = $mostLikely;
+      return $transcription;
+
+    } catch (\Exception $err) {
+      $transcription = "";
+    } finally {
+      $speechClient->close();
+      return $transcription;
     }
-   
-    return $transcription;
-
-    // } catch (\Exception $err) {
-    //     var_dump($err);
-    // }
-    //  } finally {
-    //    $client->close();
-    //    return "";
-    //  }
   }
 
 }
