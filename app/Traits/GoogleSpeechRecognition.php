@@ -11,7 +11,7 @@ trait GoogleSpeechRecognition
 {
     public static function transcribe($wavFilePath)
     {
-        try {
+      //  try {
             $speechClient = new SpeechClient();
 
             $audio = (new RecognitionAudio())
@@ -28,12 +28,17 @@ trait GoogleSpeechRecognition
             foreach ($response->getResults() as $result) {
                 $transcription .= $result->getAlternatives()[0]->getTranscript();
             }
+
             var_dump($transcription);
             return $transcription;
-        } catch (\Exception $err) {
-            var_dump($err);
-            return "";
-        }
+            
+       // } catch (\Exception $err) {
+       //     var_dump($err);
+       // }
+  //  } finally {
+    //    $client->close();
+    //    return "";
+  //  }
     }
 
 }
