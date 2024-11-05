@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Message;
 use File;
+use App\Traits\GoogleSpeechRecognition;
 
 
 class WhatsAppController extends Controller
@@ -55,8 +56,8 @@ class WhatsAppController extends Controller
             foreach ($responseBody['messages'] as $message) {
                 if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus") {
                     $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
-                    $filePathWav = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".wav");
                     file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
+                    GoogleSpeechRecognition::transcribe($filePath);
                 }
             }
 
