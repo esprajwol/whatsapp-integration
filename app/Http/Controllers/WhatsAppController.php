@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Message;
 use File;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Audio\Wav;
 
 class WhatsAppController extends Controller
 {
@@ -52,13 +54,14 @@ class WhatsAppController extends Controller
 
             // filter arrays with attachment only 
             foreach ($responseBody['messages'] as $message) {
-                if(isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus" ) {
-                  $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
+                if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus") {
+                    $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
+                    $filePathWav = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".wav");
                     file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
-
+                    $this->convertOggToWav( $filePath , $filePathWav);
                 }
             }
-            
+
             $jsonData = json_encode($responseBody['messages']);
             $filePath = storage_path($this->messageDirectoryFolder . '/order_' . ($lastId + 1) . '.json');
             file_put_contents($filePath, $jsonData);
@@ -108,6 +111,19 @@ class WhatsAppController extends Controller
         $qrData = json_decode($response->getBody(), true);
 
         return $qrData['qrCode'];
+    }
+
+    function convertOggToWav($inputFile, $outputFile)
+    {
+        $ffmpeg = FFMpeg::create();
+        $audio = $ffmpeg->open($inputFile);
+
+        $format = new Wav();
+        $format->on('progress', function ($audio, $format, $percentage) {
+            echo "Progress: $percentage%\n";
+        });
+
+        $audio->save($format, $outputFile);
     }
 }
 
