@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use App\Models\Message;
 use File;
 use App\Traits\GoogleSpeechRecognition;
+use Mockery\Undefined;
 
 
 class WhatsAppController extends Controller
@@ -54,16 +55,25 @@ class WhatsAppController extends Controller
 
             // filter arrays with attachment only 
             foreach ($responseBody['messages'] as $messageKey => $message) {
-                var_dump($message);
-                
+
                 // check if message is of audio type 
-                if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus") {
+                if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == config('constants.MIMETYPE.AUDIO')) {
                     $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
                     file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
                     // convert voice to text
                     $transcribedText = GoogleSpeechRecognition::transcribe($filePath);
                     $responseBody['messages'][$messageKey]['body']['text'] = $transcribedText;
                 }
+
+                // remove images
+                else if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == config('constants.MIMETYPE.IMAGE')) {
+                    unset($responseBody['messages'][$messageKey]);
+                }
+
+                // remove empty text messages
+                else if(empty($message['body']['text']))
+                    unset($responseBody['messages'][$messageKey]);
+
             }
 
             $jsonData = json_encode($responseBody['messages']);
