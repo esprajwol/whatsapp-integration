@@ -54,6 +54,8 @@ class WhatsAppController extends Controller
 
             // filter arrays with attachment only 
             foreach ($responseBody['messages'] as $messageKey => $message) {
+                var_dump($message);
+                
                 // check if message is of audio type 
                 if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus") {
                     $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");

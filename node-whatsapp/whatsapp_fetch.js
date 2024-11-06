@@ -90,10 +90,10 @@ app.listen(port, () => {
     console.log(`WhatsApp QR API running on port ${port}`);
 
     /** PreInitialize if QR scan */
-    /*
+    
     client.on('ready', () => {
         console.log('WhatsApp client is ready');
     });
     client.initialize();
-    */
+    
 });
