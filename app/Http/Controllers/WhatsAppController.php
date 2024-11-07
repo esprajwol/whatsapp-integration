@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Message;
 use File;
+use App\Traits\GoogleSpeechRecognition;
+use Mockery\Undefined;
+
 
 class WhatsAppController extends Controller
 {
@@ -51,24 +54,38 @@ class WhatsAppController extends Controller
             }
 
             // filter arrays with attachment only 
-            foreach ($responseBody['messages'] as $message) {
-                if(isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == "audio/ogg; codecs=opus" ) {
-                  $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
-                    file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
+            foreach ($responseBody['messages'] as $messageKey => $message) {
 
+                // check if message is of audio type 
+                if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == config('constants.MIMETYPE.AUDIO')) {
+                    $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
+                    file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
+                    // convert voice to text
+                    $transcribedText = GoogleSpeechRecognition::transcribe($filePath);
+                    $responseBody['messages'][$messageKey]['body']['text'] = $transcribedText;
                 }
+
+                // remove images
+                else if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == config('constants.MIMETYPE.IMAGE')) {
+                    unset($responseBody['messages'][$messageKey]);
+                }
+
+                // remove empty text messages
+                else if(empty($message['body']['text']))
+                    unset($responseBody['messages'][$messageKey]);
+
             }
-            
+
             $jsonData = json_encode($responseBody['messages']);
-            $filePath = storage_path($this->messageDirectoryFolder . '/order_' . ($lastId + 1) . '.json');
+            $jsonOrderFile = "order_" . ($lastId + 1). ".json";
+            $filePath = storage_path($this->messageDirectoryFolder . '/' . $jsonOrderFile);
             file_put_contents($filePath, $jsonData);
 
             Message::create([
                 'from' => $responseBody['from'],
                 'to' => $responseBody['to'],
-                'json' => $jsonData,
+                'json' => $jsonOrderFile,
             ]);
-
 
             return view('whatsapp_chat', ['messages' => $responseBody['messages']]);
         } else {
@@ -109,5 +126,5 @@ class WhatsAppController extends Controller
 
         return $qrData['qrCode'];
     }
-}
 
+}
