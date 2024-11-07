@@ -42,13 +42,11 @@ class WhatsAppController extends Controller
             $lastId = Message::max('id');
 
 
-            //check if the directory exists
+            //check if the directory exists for both voice and json folder
             if (!File::isDirectory(storage_path($this->messageDirectoryFolder))) {
-                //make the directory because it doesn't exists
                 File::makeDirectory(storage_path($this->messageDirectoryFolder));
             }
             if (!File::isDirectory(storage_path($this->voiceMessageDirectoryFolder))) {
-                //make the directory because it doesn't exists
                 File::makeDirectory(storage_path($this->voiceMessageDirectoryFolder));
             }
 

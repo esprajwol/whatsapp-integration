@@ -1,3 +1,2 @@
-2024/11/01-16:13:44.551 8903 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
-2024/11/01-16:13:44.552 8903 Recovering log #26
-2024/11/01-16:13:44.552 8903 Reusing old log /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/000026.log 
+2024/11/04-10:49:30.123 9c03 Creating DB /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb since it was missing.
+2024/11/04-10:49:30.141 9c03 Reusing MANIFEST /Users/prajwolk/Desktop/works/whatsapp-integraion/node-whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
