@@ -77,15 +77,15 @@ class WhatsAppController extends Controller
             }
 
             $jsonData = json_encode($responseBody['messages']);
-            $filePath = storage_path($this->messageDirectoryFolder . '/order_' . ($lastId + 1) . '.json');
+            $jsonOrderFile = "order_" . ($lastId + 1). ".json";
+            $filePath = storage_path($this->messageDirectoryFolder . '/' . $jsonOrderFile);
             file_put_contents($filePath, $jsonData);
 
             Message::create([
                 'from' => $responseBody['from'],
                 'to' => $responseBody['to'],
-                'json' => $jsonData,
+                'json' => $jsonOrderFile,
             ]);
-
 
             return view('whatsapp_chat', ['messages' => $responseBody['messages']]);
         } else {

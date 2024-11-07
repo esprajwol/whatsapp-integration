@@ -24,18 +24,22 @@ trait GoogleSpeechRecognition
       $config = (new RecognitionConfig())
         ->setEncoding(AudioEncoding::OGG_OPUS)
         ->setSampleRateHertz(12000)->setEnableWordTimeOffsets(true)
-        ->setLanguageCode('en-IN')->setModel('default');
+        ->setLanguageCode('en-EN')->setModel('default');
+
+        $transcription = '';
 
       $response = $speechClient->recognize($config, $audio);
-
-      $transcription = '';
+      // var_dump($response->getResults() );
+     
       foreach ($response->getResults() as $result) {
         $alternatives = $result->getAlternatives();
         $mostLikely = $alternatives[0];
+       
         $transcript = $mostLikely->getTranscript();
         //$confidence = $mostLikely->getConfidence();
         //printf('Confidence: %s' . PHP_EOL, $confidence);
         $transcription = $transcript;
+        
       }
 
       return $transcription;

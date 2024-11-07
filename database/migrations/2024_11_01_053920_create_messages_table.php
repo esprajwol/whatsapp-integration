@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('from');
             $table->string('to');
-            $table->json('json');
+            $table->string('json', 50);
             $table->timestamps();
         });
     }
