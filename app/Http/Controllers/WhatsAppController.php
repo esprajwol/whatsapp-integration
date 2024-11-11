@@ -61,8 +61,7 @@ class WhatsAppController extends Controller
                     file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
                     
                     // convert voice file to text
-                    $transcribedText = GenericSpeechRecognition::transcribe($fileName);
-                    var_dump($transcribedText);
+                    $transcribedText = GenericSpeechRecognition::transcribe($fileName)
                     
                     $responseBody['messages'][$messageKey]['body']['text'] = $transcribedText;
                 }
