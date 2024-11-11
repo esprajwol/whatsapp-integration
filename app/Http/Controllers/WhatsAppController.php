@@ -7,14 +7,12 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Message;
 use File;
-use App\Traits\GoogleSpeechRecognition;
-use Mockery\Undefined;
-
+use App\Traits\GenericSpeechRecognition;
 
 class WhatsAppController extends Controller
 {
     public $messageDirectoryFolder = "json-messages";
-    public $voiceMessageDirectoryFolder = "voice-messages";
+    public $voiceMessageDirectoryFolder = "voices";
 
     public function fetch(Request $request)
     {
@@ -58,10 +56,12 @@ class WhatsAppController extends Controller
 
                 // check if message is of audio type 
                 if (isset($message['body']['attachment']) && $message['body']['attachment']['mimetype'] == config('constants.MIMETYPE.AUDIO')) {
-                    $filePath = storage_path($this->voiceMessageDirectoryFolder . "/" . $message['message_link'] . "_" . $message['datetime'] . ".ogg");
+                    $fileName = $message['message_link'] . "_" . $message['datetime'] . ".ogg";
+                    $filePath = storage_path($this->voiceMessageDirectoryFolder . "/". $fileName );
                     file_put_contents($filePath, base64_decode($message['body']['attachment']['data']));
-                    // convert voice to text
-                    $transcribedText = GoogleSpeechRecognition::transcribe($filePath);
+                    
+                    // convert voice file to text
+                    $transcribedText = GenericSpeechRecognition::transcribe($fileName);
                     $responseBody['messages'][$messageKey]['body']['text'] = $transcribedText;
                 }
 

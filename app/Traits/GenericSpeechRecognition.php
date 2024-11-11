@@ -1,17 +1,21 @@
 <?php
 
 namespace App\Traits;
-
-use Google\Cloud\Speech\V1\SpeechClient;
-use Google\Cloud\Speech\V1\RecognitionAudio;
-use Google\Cloud\Speech\V1\RecognitionConfig;
-use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
+use FFMpeg;
 
 trait GenericSpeechRecognition
 {
-  public static function transcribe($audioFilePath): string
+ 
+  public static function transcribe($wavFileName): string
   {
+    $outputFile = self::convertOggToWav($wavFileName);    
     return "this is text";
   }
 
+  public static function convertOggToWav($inputFile): string
+  {
+    $outputFile = pathinfo($inputFile, PATHINFO_FILENAME). '.wav';
+    FFMpeg::fromDisk("voices")->open($inputFile)->export()->inFormat(new \FFMpeg\Format\Audio\Wav)->save($outputFile);
+    return $outputFile;
+  }
 }

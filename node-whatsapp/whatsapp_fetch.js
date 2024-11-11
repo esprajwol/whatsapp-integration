@@ -19,7 +19,11 @@ app.post('/generate-qr', async (req, res) => {
         res.json({ qrCode: qrImage });
     });
 
-  
+    client.on('ready', () => {
+        console.log('WhatsApp client is ready');
+    });
+
+    client.initialize();
 });
 
 client.on('ready', async () => {

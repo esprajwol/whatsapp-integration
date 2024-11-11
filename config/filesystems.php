@@ -36,6 +36,13 @@ return [
             'throw' => false,
         ],
 
+        'voices' => [
+            'driver' => 'local',
+            'root' => storage_path('voices'),
+            'throw' => false,
+        ],
+
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
