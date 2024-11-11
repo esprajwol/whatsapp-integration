@@ -18,3 +18,13 @@ The WhatsApp Message Integration project aims to incorporate WhatsApp text, voic
     - nodemon whatsapp_fetch.js
 
 
+## Running Python
+    - Needed Packages to be install
+        ``` sudo python3 -m pip install SpeechRecognition  --break-system-packages ```
+        ``` sudo python3 -m pip install pydub  --break-system-packages ```
+        ``` sudo python3 -m pip install standard-aifc  --break-system-packages ```   
+
+
+
+
+
