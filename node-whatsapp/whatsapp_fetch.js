@@ -12,17 +12,14 @@ const client = new Client({
 });
 
 app.post('/generate-qr', async (req, res) => {
+    console.log("🚀 ~ app.post ~ req:", req)
     client.on('qr', async (qr) => {
         // Generate QR code in base64 format
         const qrImage = await qrCode.toDataURL(qr);
         res.json({ qrCode: qrImage });
     });
 
-    client.on('ready', () => {
-        console.log('WhatsApp client is ready');
-    });
-
-    client.initialize();
+  
 });
 
 client.on('ready', async () => {
@@ -91,9 +88,9 @@ app.listen(port, () => {
 
     /** PreInitialize if QR scan */
     
-    client.on('ready', () => {
+    /*client.on('ready', () => {
         console.log('WhatsApp client is ready');
     });
     client.initialize();
-    
+    */
 });
