@@ -62,6 +62,8 @@ class WhatsAppController extends Controller
                     
                     // convert voice file to text
                     $transcribedText = GenericSpeechRecognition::transcribe($fileName);
+                    var_dump($transcribedText);
+                    
                     $responseBody['messages'][$messageKey]['body']['text'] = $transcribedText;
                 }
 
